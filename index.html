@@ -1,689 +1,479 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>KitchenFinds – Genius Gadgets You'll Wish You Had Sooner</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KitchenFinds — Kitchen Gadgets That Make Life Easier</title>
+<meta name="description" content="Curated kitchen gadgets with thousands of 5-star reviews. The internet's best-loved kitchen finds, all in one place.">
+<meta property="og:title" content="KitchenFinds — Kitchen Gadgets That Make Life Easier">
+<meta property="og:description" content="Curated kitchen gadgets with thousands of 5-star reviews.">
+<meta property="og:image" content="https://m.media-amazon.com/images/I/51N42Mo2xvL._AC_SL1500_.jpg">
+<meta property="og:type" content="website">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22><circle cx=%2212%22 cy=%2212%22 r=%2211%22 fill=%22%23E8775A%22/><text x=%2212%22 y=%2217%22 font-size=%2214%22 text-anchor=%22middle%22 fill=%22white%22>K</text></svg>">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --cream: #15110F; --cream-deep: #1E1714; --coral: #E8775A; --coral-deep: #FF8F6B; --coral-soft: #2A1E1A;
+  --pink: #F2A6A1; --pink-soft: #2A1E22; --ink: #FFF8F2; --ink-soft: #B8A89F; --gold: #E0A951; --white: #15110F;
+  --card-bg: #1E1714; --card-border: rgba(255,248,242,0.08);
+}
+body { font-family: 'Helvetica Neue', Arial, sans-serif; background: var(--cream); color: var(--ink); overflow-x: hidden; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+.icon { width: 1em; height: 1em; display: inline-block; vertical-align: -0.15em; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
 
-    :root {
-      --cream: #faf7f2;
-      --warm: #f5efe6;
-      --accent: #d4622a;
-      --accent2: #e8934a;
-      --dark: #1a1410;
-      --mid: #5c4d3c;
-      --light: #9b8b7a;
-      --white: #ffffff;
-      --card: #ffffff;
-      --border: #ede8e0;
-      --radius: 16px;
-      --shadow: 0 4px 24px rgba(26,20,16,.08);
-      --shadow-hover: 0 12px 40px rgba(26,20,16,.16);
-    }
+@keyframes float { 0%,100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-14px) rotate(3deg); } }
+@keyframes floatSlow { 0%,100% { transform: translateY(0px) rotate(0deg); } 50% { transform: translateY(-22px) rotate(-4deg); } }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%,100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+@keyframes spin360 { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
-    html { scroll-behavior: smooth; }
+.fade-in { opacity: 0; animation: fadeUp 0.8s ease forwards; }
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s ease, transform 0.7s ease; }
+.reveal.in-view { opacity: 1; transform: translateY(0); }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--cream);
-      color: var(--dark);
-      line-height: 1.6;
-    }
+nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; display: flex; align-items: center; justify-content: space-between; padding: 18px 6%; background: rgba(21,17,15,0.85); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,248,242,0.08); transition: padding 0.3s ease; }
+.logo { font-size: 24px; font-weight: 700; color: var(--ink); letter-spacing: -0.5px; }
+.logo span { color: var(--coral); }
+.nav-links { display: flex; gap: 36px; font-size: 14px; font-weight: 600; color: var(--ink-soft); }
+.nav-links a { position: relative; transition: color 0.25s; }
+.nav-links a:hover { color: var(--coral); }
+.nav-links a::after { content: ''; position: absolute; left: 0; bottom: -6px; width: 0; height: 2px; background: var(--coral); transition: width 0.3s ease; }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta { background: var(--coral); color: #15110F; padding: 10px 22px; border-radius: 30px; font-size: 13px; font-weight: 700; transition: transform 0.25s, box-shadow 0.25s; }
+.nav-cta:hover { transform: translateY(-2px) scale(1.04); box-shadow: 0 10px 24px rgba(232,119,90,0.5); }
 
-    /* ── NAV ── */
-    nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(250,247,242,.92);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-      padding: 0 24px;
-    }
-    .nav-inner {
-      max-width: 1160px; margin: auto;
-      display: flex; align-items: center; justify-content: space-between;
-      height: 64px;
-    }
-    .logo { font-size: 20px; font-weight: 800; color: var(--accent); letter-spacing: -0.5px; }
-    .logo span { color: var(--dark); }
-    nav ul { list-style: none; display: flex; gap: 28px; }
-    nav ul a { text-decoration: none; color: var(--mid); font-size: 14px; font-weight: 500; transition: color .2s; }
-    nav ul a:hover { color: var(--accent); }
-    .nav-cta {
-      background: var(--accent); color: #fff; border: none;
-      padding: 10px 20px; border-radius: 50px; font-size: 13px; font-weight: 600;
-      cursor: pointer; transition: background .2s, transform .15s;
-    }
-    .nav-cta:hover { background: #bf5522; transform: translateY(-1px); }
+.hero { position: relative; min-height: 100vh; display: flex; align-items: center; padding: 140px 6% 80px; overflow: hidden; background: radial-gradient(ellipse at 70% 20%, rgba(232,119,90,0.18) 0%, var(--cream) 60%); }
+.glow { position: absolute; border-radius: 50%; filter: blur(60px); opacity: 0.5; pointer-events: none; transition: transform 4s ease, opacity 4s ease; }
+.glow1 { width: 420px; height: 420px; background: var(--coral); top: -120px; right: -80px; animation: glowMove1 14s ease-in-out infinite; }
+.glow2 { width: 320px; height: 320px; background: var(--gold); bottom: -80px; left: 0; animation: glowMove2 18s ease-in-out infinite; }
+.glow3 { width: 260px; height: 260px; background: var(--pink); top: 40%; left: 45%; animation: glowMove3 16s ease-in-out infinite; opacity: 0.3; }
+@keyframes glowMove1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-60px,40px) scale(1.2); } }
+@keyframes glowMove2 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(50px,-30px) scale(1.15); } }
+@keyframes glowMove3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(-30px,-50px) scale(0.85); } }
+.hero-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; width: 100%; max-width: 1280px; margin: 0 auto; position: relative; z-index: 2; }
+.hero-eyebrow { display: inline-flex; align-items: center; gap: 8px; background: var(--coral-soft); color: var(--coral-deep); font-size: 13px; font-weight: 700; padding: 8px 16px; border-radius: 30px; margin-bottom: 24px; }
+.hero-eyebrow .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--coral); animation: pulse 1.6s infinite; }
+.hero h1 { font-size: 56px; line-height: 1.05; font-weight: 800; color: var(--ink); letter-spacing: -1.5px; margin-bottom: 22px; }
+.hero h1 .highlight { color: var(--coral-deep); font-style: italic; font-family: Georgia, serif; }
+.hero p.sub { font-size: 18px; color: var(--ink-soft); max-width: 480px; line-height: 1.6; margin-bottom: 36px; }
+.hero-actions { display: flex; gap: 16px; align-items: center; flex-wrap: wrap; }
+.btn-primary { background: var(--coral); color: white; padding: 17px 34px; border-radius: 50px; font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 10px; box-shadow: 0 12px 30px rgba(232,119,90,0.35); transition: transform 0.3s, box-shadow 0.3s; }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 36px rgba(232,119,90,0.45); }
+.btn-secondary { color: var(--ink); font-weight: 700; font-size: 15px; display: inline-flex; align-items: center; gap: 8px; border-bottom: 2px solid var(--ink); padding-bottom: 4px; transition: color 0.3s, border-color 0.3s; }
+.btn-secondary:hover { color: var(--coral-deep); border-color: var(--coral-deep); }
 
-    /* ── HERO ── */
-    .hero {
-      background: linear-gradient(135deg, #1a1410 0%, #3d2b1f 50%, #5c3d2a 100%);
-      color: #fff;
-      padding: 100px 24px 90px;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .hero::before {
-      content: '';
-      position: absolute; inset: 0;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(212,98,42,.35) 0%, transparent 70%);
-    }
-    .hero-badge {
-      display: inline-block;
-      background: rgba(212,98,42,.25);
-      border: 1px solid rgba(212,98,42,.5);
-      color: var(--accent2);
-      padding: 6px 16px; border-radius: 50px;
-      font-size: 12px; font-weight: 600; letter-spacing: .8px; text-transform: uppercase;
-      margin-bottom: 24px; position: relative;
-    }
-    .hero h1 {
-      font-size: clamp(36px, 6vw, 72px);
-      font-weight: 900; line-height: 1.08; letter-spacing: -2px;
-      margin-bottom: 24px; position: relative;
-    }
-    .hero h1 em { font-style: normal; color: var(--accent2); }
-    .hero p {
-      font-size: clamp(16px, 2vw, 20px); color: rgba(255,255,255,.7);
-      max-width: 560px; margin: 0 auto 40px; position: relative;
-    }
-    .hero-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; position: relative; }
-    .btn-primary {
-      background: var(--accent); color: #fff;
-      padding: 16px 32px; border-radius: 50px;
-      font-size: 15px; font-weight: 700; text-decoration: none;
-      transition: all .2s; box-shadow: 0 4px 20px rgba(212,98,42,.4);
-      border: none; cursor: pointer;
-    }
-    .btn-primary:hover { background: #bf5522; transform: translateY(-2px); box-shadow: 0 8px 30px rgba(212,98,42,.5); }
-    .btn-ghost {
-      background: transparent; color: #fff;
-      padding: 16px 32px; border-radius: 50px;
-      font-size: 15px; font-weight: 600; text-decoration: none;
-      border: 1px solid rgba(255,255,255,.3);
-      transition: all .2s;
-    }
-    .btn-ghost:hover { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.6); }
-    .hero-stats {
-      display: flex; gap: 40px; justify-content: center; margin-top: 56px;
-      flex-wrap: wrap; position: relative;
-    }
-    .stat { text-align: center; }
-    .stat-n { font-size: 28px; font-weight: 800; color: var(--accent2); }
-    .stat-l { font-size: 12px; color: rgba(255,255,255,.5); margin-top: 2px; }
+.hero-stage { position: relative; height: 480px; display: flex; align-items: center; justify-content: center; }
+.hero-stage-glow { position: absolute; width: 320px; height: 320px; background: radial-gradient(circle, rgba(232,119,90,0.35), transparent 70%); filter: blur(20px); border-radius: 50%; animation: pulse 3s ease-in-out infinite; }
+.hero-carousel { position: relative; width: 320px; height: 360px; z-index: 2; }
+.hero-slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 28px; padding: 24px; opacity: 0; transform: scale(0.92) rotate(-2deg); transition: opacity 0.8s ease, transform 0.8s ease; box-shadow: 0 30px 70px rgba(0,0,0,0.5); }
+.hero-slide.active { opacity: 1; transform: scale(1) rotate(0deg); z-index: 3; }
+.hero-slide img { width: 100%; height: 230px; object-fit: contain; }
+.hero-slide .hs-name { font-size: 15px; font-weight: 700; margin-top: 14px; }
+.hero-slide .hs-rating { font-size: 12px; color: var(--gold); margin-top: 6px; }
+.hero-dots { display: flex; gap: 6px; justify-content: center; margin-top: 18px; position: absolute; bottom: -36px; left: 50%; transform: translateX(-50%); }
+.hero-dots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,248,242,0.2); transition: all 0.3s; }
+.hero-dots span.active { background: var(--coral); width: 20px; border-radius: 4px; }
 
-    /* ── SECTION WRAPPER ── */
-    section { padding: 80px 24px; }
-    .container { max-width: 1160px; margin: auto; }
-    .section-label {
-      font-size: 12px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
-      color: var(--accent); margin-bottom: 12px;
-    }
-    .section-title {
-      font-size: clamp(28px, 4vw, 44px); font-weight: 800; letter-spacing: -1px;
-      color: var(--dark); margin-bottom: 16px; line-height: 1.15;
-    }
-    .section-sub { font-size: 17px; color: var(--light); max-width: 520px; }
+.ticker-wrap { background: var(--ink); padding: 14px 0; overflow: hidden; white-space: nowrap; }
+.ticker { display: inline-flex; animation: ticker 22s linear infinite; }
+.ticker span { color: var(--cream); font-size: 13px; font-weight: 600; padding: 0 30px; letter-spacing: 0.3px; opacity: 0.9; display: inline-flex; align-items: center; gap: 8px; }
+.ticker span .icon { color: var(--gold); }
 
-    /* ── PRODUCTS GRID ── */
-    #products { background: var(--cream); }
-    .products-header { margin-bottom: 48px; }
-    .products-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 24px;
-    }
-    .product-card {
-      background: var(--card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      transition: transform .25s, box-shadow .25s;
-      cursor: pointer;
-    }
-    .product-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-hover); }
-    .card-img {
-      width: 100%; aspect-ratio: 4/3; object-fit: cover;
-      background: var(--warm);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 64px;
-    }
-    .card-body { padding: 20px; }
-    .card-tag {
-      display: inline-block;
-      background: #fef3ee; color: var(--accent);
-      font-size: 11px; font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
-      padding: 3px 10px; border-radius: 20px; margin-bottom: 10px;
-    }
-    .card-title { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--dark); line-height: 1.3; }
-    .card-problem { font-size: 13px; color: var(--light); margin-bottom: 16px; line-height: 1.5; }
-    .card-footer { display: flex; align-items: center; justify-content: space-between; }
-    .card-price { font-size: 18px; font-weight: 800; color: var(--accent); }
-    .card-price span { font-size: 12px; font-weight: 400; color: var(--light); }
-    .card-btn {
-      background: var(--accent); color: #fff;
-      padding: 8px 16px; border-radius: 50px;
-      font-size: 13px; font-weight: 600; text-decoration: none;
-      transition: background .2s;
-    }
-    .card-btn:hover { background: #bf5522; }
-    .card-stars { font-size: 12px; color: #f59e0b; margin-bottom: 4px; }
+.section { padding: 90px 6%; max-width: 1280px; margin: 0 auto; }
+.section-head { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+.section-eyebrow { color: var(--coral); font-weight: 700; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: 10px; }
+.section-head h2 { font-size: 36px; font-weight: 800; letter-spacing: -1px; margin-bottom: 14px; }
+.section-head p { color: var(--ink-soft); font-size: 16px; line-height: 1.6; }
 
-    /* ── FEATURED ── */
-    #featured { background: var(--warm); }
-    .featured-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; }
-    .featured-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 36px;
-      border: 1px solid var(--border);
-      display: flex; gap: 24px; align-items: flex-start;
-      transition: box-shadow .2s;
-    }
-    .featured-card:hover { box-shadow: var(--shadow-hover); }
-    .feat-icon { font-size: 48px; flex-shrink: 0; }
-    .feat-tag {
-      background: #fef3ee; color: var(--accent);
-      font-size: 11px; font-weight: 700; letter-spacing: .5px; text-transform: uppercase;
-      padding: 3px 10px; border-radius: 20px; display: inline-block; margin-bottom: 10px;
-    }
-    .feat-title { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-    .feat-desc { font-size: 14px; color: var(--light); margin-bottom: 20px; line-height: 1.6; }
-    .feat-link {
-      color: var(--accent); font-size: 14px; font-weight: 600;
-      text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
-    }
-    .feat-link:hover { text-decoration: underline; }
+.cat-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; margin-bottom: 50px; }
+.cat-pill { padding: 10px 22px; border-radius: 30px; background: var(--card-bg); border: 1px solid var(--card-border); font-size: 14px; font-weight: 700; color: var(--ink-soft); cursor: pointer; transition: all 0.25s; }
+.cat-pill.active, .cat-pill:hover { background: var(--coral); color: #15110F; border-color: var(--coral); }
 
-    /* ── EMAIL CAPTURE ── */
-    #email-capture {
-      background: linear-gradient(135deg, #1a1410, #3d2b1f);
-      color: #fff;
-      text-align: center;
-    }
-    #email-capture .section-title { color: #fff; }
-    #email-capture .section-sub { color: rgba(255,255,255,.6); margin: 0 auto 40px; }
-    .lead-magnet-box {
-      background: rgba(255,255,255,.05);
-      border: 1px solid rgba(255,255,255,.12);
-      border-radius: var(--radius);
-      padding: 40px;
-      max-width: 560px; margin: 0 auto 40px;
-    }
-    .lead-magnet-box h3 { font-size: 22px; font-weight: 800; margin-bottom: 8px; }
-    .lead-magnet-box p { font-size: 14px; color: rgba(255,255,255,.6); }
-    .lead-list {
-      list-style: none; text-align: left; margin-top: 20px;
-      display: flex; flex-direction: column; gap: 10px;
-    }
-    .lead-list li {
-      font-size: 14px; color: rgba(255,255,255,.8);
-      display: flex; align-items: center; gap: 10px;
-    }
-    .lead-list li::before { content: '✓'; color: var(--accent2); font-weight: 700; }
-    .email-form { display: flex; gap: 12px; max-width: 480px; margin: 0 auto; flex-wrap: wrap; }
-    .email-form input {
-      flex: 1; min-width: 200px;
-      padding: 16px 20px; border-radius: 50px;
-      border: 1px solid rgba(255,255,255,.2);
-      background: rgba(255,255,255,.08);
-      color: #fff; font-size: 15px; font-family: inherit;
-      outline: none; transition: border .2s;
-    }
-    .email-form input::placeholder { color: rgba(255,255,255,.4); }
-    .email-form input:focus { border-color: var(--accent2); }
-    .email-form button {
-      background: var(--accent); color: #fff;
-      padding: 16px 28px; border-radius: 50px;
-      font-size: 15px; font-weight: 700; border: none; cursor: pointer;
-      transition: all .2s; white-space: nowrap;
-    }
-    .email-form button:hover { background: #bf5522; transform: translateY(-2px); }
-    .form-note { font-size: 12px; color: rgba(255,255,255,.4); margin-top: 14px; }
+.grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 26px; }
+.card { background: var(--card-bg); border-radius: 22px; overflow: hidden; position: relative; transition: transform 0.4s cubic-bezier(.2,.8,.2,1), box-shadow 0.4s, border-color 0.4s; border: 1px solid var(--card-border); }
+.card:hover { transform: translateY(-10px); box-shadow: 0 28px 60px rgba(232,119,90,0.18); border-color: rgba(232,119,90,0.4); }
+.card-img-wrap { position: relative; height: 220px; background: linear-gradient(135deg, var(--cream-deep), var(--coral-soft)); overflow: hidden; }
+.gallery { position: relative; width: 100%; height: 100%; }
+.gallery img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: contain; padding: 18px; opacity: 0; transition: opacity 0.35s ease, transform 0.5s ease; cursor: pointer; }
+.gallery img.active { opacity: 1; }
+.card:hover .gallery img.active { transform: scale(1.06); }
+.gdots { position: absolute; bottom: 10px; left: 0; right: 0; display: flex; justify-content: center; gap: 5px; z-index: 3; }
+.gdots span { width: 6px; height: 6px; border-radius: 50%; background: rgba(58,46,42,0.25); transition: all 0.25s; cursor: pointer; }
+.gdots span.active { background: var(--coral-deep); width: 16px; border-radius: 4px; }
+.gnav { position: absolute; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.9); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.25s; z-index: 3; color: var(--ink); cursor: pointer; }
+.card:hover .gnav { opacity: 1; }
+.gnav.prev { left: 8px; } .gnav.next { right: 8px; }
+.gnav .icon { width: 13px; height: 13px; }
+.gnav.next .icon { transform: rotate(180deg); }
+.badge { position: absolute; top: 12px; left: 12px; background: var(--coral); color: white; font-size: 11px; font-weight: 700; padding: 5px 11px; border-radius: 20px; z-index: 4; }
+.badge.bestseller { background: var(--gold); }
+.fav-btn { position: absolute; top: 12px; right: 12px; display: flex; align-items: center; gap: 5px; background: rgba(255,255,255,0.92); padding: 7px 11px; border-radius: 30px; font-size: 11px; font-weight: 700; color: var(--ink-soft); transition: all 0.25s; z-index: 4; cursor: pointer; }
+.fav-btn:hover { background: var(--coral); color: white; }
+.fav-btn .icon { width: 14px; height: 14px; }
+.card-body { padding: 18px 20px 22px; }
+.card-cat { font-size: 11px; color: var(--coral-deep); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 6px; }
+.card-title { font-size: 15px; font-weight: 700; color: var(--ink); line-height: 1.35; margin-bottom: 10px; min-height: 40px; }
+.card-rating { display: flex; align-items: center; gap: 6px; margin-bottom: 14px; }
+.stars { color: var(--gold); font-size: 13px; letter-spacing: 1px; }
+.rev-count { font-size: 12px; color: var(--ink-soft); }
+.shop-btn { background: var(--ink); color: white; font-size: 13px; font-weight: 700; padding: 11px 18px; border-radius: 30px; display: flex; align-items: center; gap: 6px; transition: all 0.3s; width: 100%; justify-content: center; }
+.shop-btn:hover { background: var(--coral); transform: scale(1.03); }
+.shop-btn .icon { width: 14px; height: 14px; transition: transform 0.3s; }
+.shop-btn:hover .icon { transform: translateX(3px); }
+.card.hidden { display: none; }
+.load-more-wrap { text-align: center; margin-top: 40px; }
+.load-more-btn { background: white; border: 1px solid rgba(58,46,42,0.15); color: var(--ink); padding: 14px 34px; border-radius: 30px; font-weight: 700; font-size: 14px; cursor: pointer; transition: all 0.3s; }
+.load-more-btn:hover { background: var(--ink); color: white; }
 
-    /* ── HOW IT WORKS ── */
-    #how { background: var(--cream); }
-    .steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; }
-    .step {
-      background: var(--white);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 36px 28px;
-      text-align: center;
-      position: relative;
-    }
-    .step-num {
-      width: 48px; height: 48px;
-      background: var(--accent); color: #fff;
-      border-radius: 50%; display: flex; align-items: center; justify-content: center;
-      font-size: 18px; font-weight: 800; margin: 0 auto 20px;
-    }
-    .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
-    .step p { font-size: 14px; color: var(--light); line-height: 1.6; }
+.why-section { background: white; }
+.why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 28px; }
+.why-card { text-align: center; padding: 30px 18px; transition: transform 0.35s; }
+.why-card:hover { transform: translateY(-8px); }
+.why-icon { width: 70px; height: 70px; border-radius: 50%; background: var(--coral-soft); color: var(--coral-deep); display: flex; align-items: center; justify-content: center; margin: 0 auto 18px; transition: transform 0.4s, background 0.4s; }
+.why-icon .icon { width: 28px; height: 28px; }
+.why-card:hover .why-icon { background: var(--coral); color: white; transform: rotate(10deg) scale(1.1); }
+.why-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.why-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
 
-    /* ── TESTIMONIALS ── */
-    #reviews { background: var(--warm); }
-    .reviews-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
-    .review-card {
-      background: var(--white);
-      border-radius: var(--radius);
-      padding: 28px;
-      border: 1px solid var(--border);
-    }
-    .review-stars { color: #f59e0b; font-size: 16px; margin-bottom: 14px; }
-    .review-text { font-size: 15px; line-height: 1.6; color: var(--mid); margin-bottom: 20px; }
-    .reviewer { display: flex; align-items: center; gap: 12px; }
-    .reviewer-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--accent); color: #fff;
-      display: flex; align-items: center; justify-content: center;
-      font-size: 16px; font-weight: 700; flex-shrink: 0;
-    }
-    .reviewer-name { font-size: 14px; font-weight: 600; }
-    .reviewer-tag { font-size: 12px; color: var(--light); }
+.stats-bar { display: grid; grid-template-columns: repeat(4, 1fr); background: var(--ink); border-radius: 28px; padding: 50px 30px; margin: 0 6%; color: white; position: relative; overflow: hidden; }
+.stats-bar::before { content: ''; position: absolute; width: 300px; height: 300px; background: var(--coral); opacity: 0.18; border-radius: 50%; top: -100px; right: -100px; }
+.stat { text-align: center; position: relative; z-index: 2; }
+.stat .num { font-size: 38px; font-weight: 800; color: var(--gold); }
+.stat .lbl { font-size: 13px; color: rgba(255,255,255,0.75); margin-top: 6px; font-weight: 600; }
 
-    /* ── FOOTER ── */
-    footer {
-      background: var(--dark); color: rgba(255,255,255,.5);
-      padding: 40px 24px; text-align: center;
-    }
-    footer .logo { color: var(--accent2); display: block; margin-bottom: 12px; }
-    footer p { font-size: 13px; line-height: 1.8; }
-    footer a { color: rgba(255,255,255,.4); text-decoration: none; }
-    footer a:hover { color: var(--accent2); }
-    .footer-links { display: flex; gap: 24px; justify-content: center; margin: 16px 0; flex-wrap: wrap; }
+.test-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 26px; }
+.test-card { background: white; border-radius: 22px; padding: 28px; border: 1px solid rgba(58,46,42,0.06); transition: transform 0.35s, box-shadow 0.35s; }
+.test-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(58,46,42,0.1); }
+.test-stars { color: var(--gold); font-size: 14px; margin-bottom: 14px; }
+.test-card p.quote { font-size: 14.5px; color: var(--ink-soft); line-height: 1.7; margin-bottom: 18px; font-style: italic; }
+.test-user { display: flex; align-items: center; gap: 12px; }
+.avatar { width: 38px; height: 38px; border-radius: 50%; background: var(--pink-soft); display: flex; align-items: center; justify-content: center; font-weight: 700; color: var(--coral-deep); font-size: 14px; }
+.test-user .name { font-size: 13px; font-weight: 700; }
+.test-user .role { font-size: 12px; color: var(--ink-soft); }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
-      .featured-grid { grid-template-columns: 1fr; }
-      .steps { grid-template-columns: 1fr; }
-      .reviews-grid { grid-template-columns: 1fr; }
-      nav ul { display: none; }
-    }
+.cta-section { background: linear-gradient(120deg, var(--coral) 0%, var(--coral-deep) 100%); border-radius: 32px; margin: 0 6% 90px; padding: 70px 50px; text-align: center; position: relative; overflow: hidden; }
+.cta-section .blob3 { position: absolute; width: 260px; height: 260px; background: rgba(255,255,255,0.1); border-radius: 50%; top: -80px; left: -80px; }
+.cta-section .blob4 { position: absolute; width: 180px; height: 180px; background: rgba(255,255,255,0.1); border-radius: 50%; bottom: -60px; right: 10%; }
+.cta-section h2 { color: white; font-size: 32px; font-weight: 800; margin-bottom: 14px; position: relative; z-index: 2; }
+.cta-section p { color: rgba(255,255,255,0.85); font-size: 16px; margin-bottom: 30px; position: relative; z-index: 2; }
+.cta-form { display: flex; gap: 12px; justify-content: center; position: relative; z-index: 2; flex-wrap: wrap; }
+.cta-form input { padding: 16px 22px; border-radius: 30px; border: none; width: 320px; font-size: 14px; outline: none; }
+.cta-form button { background: var(--ink); color: white; padding: 16px 30px; border-radius: 30px; font-weight: 700; font-size: 14px; transition: transform 0.3s; border: none; cursor: pointer; }
+.cta-form button:hover { transform: scale(1.05); background: white; color: var(--coral-deep); }
 
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(30px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-    .fade-up { animation: fadeUp .6s ease both; }
-    .fade-up-2 { animation: fadeUp .6s .15s ease both; }
-    .fade-up-3 { animation: fadeUp .6s .3s ease both; }
+footer { background: var(--ink); color: rgba(255,255,255,0.7); padding: 60px 6% 30px; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 40px; max-width: 1280px; margin: 0 auto 40px; }
+.footer-grid h4 { color: white; font-size: 14px; margin-bottom: 18px; }
+.footer-grid li { font-size: 13.5px; margin-bottom: 10px; transition: color 0.25s; cursor: pointer; }
+.footer-grid li:hover { color: var(--gold); }
+.footer-logo { font-size: 22px; font-weight: 800; color: white; margin-bottom: 14px; }
+.footer-logo span { color: var(--coral); }
+.footer-grid p.desc { font-size: 13.5px; line-height: 1.7; max-width: 280px; }
+.social-row { display: flex; gap: 12px; margin-top: 18px; }
+.social-row a { width: 36px; height: 36px; border-radius: 50%; background: rgba(255,255,255,0.08); display: flex; align-items: center; justify-content: center; transition: all 0.3s; }
+.social-row a:hover { background: var(--coral); transform: translateY(-3px); }
+.social-row .icon { width: 16px; height: 16px; color: white; }
+.footer-bottom { text-align: center; font-size: 12.5px; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 24px; max-width: 1280px; margin: 0 auto; }
 
-    /* ── SUCCESS STATE ── */
-    .success-msg {
-      display: none; background: rgba(212,98,42,.15);
-      border: 1px solid var(--accent2); border-radius: 12px;
-      padding: 16px 24px; color: var(--accent2);
-      font-weight: 600; margin-top: 16px;
-    }
-  </style>
+@media (max-width: 900px) {
+  .hero-grid { grid-template-columns: 1fr; }
+  .hero h1 { font-size: 36px; }
+  .hero-visual { height: 320px; }
+  .grid, .why-grid, .test-grid { grid-template-columns: repeat(2, 1fr); }
+  .stats-bar { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
 </head>
 <body>
 
-<!-- NAV -->
+<svg width="0" height="0" style="position:absolute">
+<defs>
+<symbol id="i-spark" viewBox="0 0 24 24"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></symbol>
+<symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+<symbol id="i-truck" viewBox="0 0 24 24"><path d="M3 7h11v8H3V7z"/><path d="M14 11h4l3 3v1h-7v-4z"/><circle cx="7" cy="17" r="1.5"/><circle cx="17" cy="17" r="1.5"/></symbol>
+<symbol id="i-star" viewBox="0 0 24 24"><path d="M12 2l3 7 7 .5-5.5 4.5 2 7-6.5-4-6.5 4 2-7L2 9.5 9 9l3-7z"/></symbol>
+<symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 2l8 4v6c0 5-4 8-8 10-4-2-8-5-8-10V6l8-4z"/><path d="M9 12l2 2 4-4"/></symbol>
+<symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 21s-8-5-8-11a5 5 0 0 1 9-3 5 5 0 0 1 9 3c0 6-8 11-8 11z"/></symbol>
+<symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></symbol>
+<symbol id="i-refresh" viewBox="0 0 24 24"><path d="M21 12a9 9 0 1 1-3-6.7M21 4v5h-5"/></symbol>
+<symbol id="i-dollar" viewBox="0 0 24 24"><path d="M12 2v20M16 6H10a3 3 0 0 0 0 6h4a3 3 0 0 1 0 6H8"/></symbol>
+<symbol id="i-handshake" viewBox="0 0 24 24"><path d="M2 12l4-4 4 4-4 4-4-4zM12 8l3-3 7 7-3 3M9 13l3 3 3-3"/></symbol>
+<symbol id="i-pinterest" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9 17c1-3 2-7 2-9a2 2 0 1 1 4 0c0 1-1 4-1 6 0 1 1 2 2 2 2 0 4-2 4-5a6 6 0 0 0-6-6c-3 0-6 2-6 6 0 1 0 2 1 3"/></symbol>
+<symbol id="i-instagram" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17" cy="7" r="1"/></symbol>
+<symbol id="i-tiktok" viewBox="0 0 24 24"><path d="M14 3v11a3 3 0 1 1-3-3M14 3a5 5 0 0 0 5 5"/></symbol>
+</defs>
+</svg>
+
 <nav>
-  <div class="nav-inner">
-    <div class="logo">Kitchen<span>Finds</span></div>
-    <ul>
-      <li><a href="#products">Products</a></li>
-      <li><a href="#featured">Editor's Pick</a></li>
-      <li><a href="#reviews">Reviews</a></li>
-      <li><a href="#email-capture">Free Guide</a></li>
-    </ul>
-    <button class="nav-cta" onclick="document.getElementById('email-capture').scrollIntoView({behavior:'smooth'})">
-      Get Free Guide →
-    </button>
+  <div class="logo">Kitchen<span>Finds</span></div>
+  <div class="nav-links">
+    <a href="#bestsellers">Bestsellers</a>
+    <a href="#why">Why us</a>
+    <a href="#reviews">Reviews</a>
+    <a href="#join">Pinterest</a>
   </div>
+  <a href="#bestsellers" class="nav-cta">Shop now</a>
 </nav>
 
-<!-- HERO -->
-<div class="hero">
-  <div class="fade-up">
-    <div class="hero-badge">🔥 Trending on Pinterest 2025</div>
-    <h1>45 <em>Genius</em> Amazon<br>Kitchen Finds You'll<br>Wish You Had Sooner</h1>
-    <p>Curated gadgets that actually save you time, space, and money — tested and loved by 50,000+ home cooks.</p>
-    <div class="hero-btns">
-      <a href="#products" class="btn-primary">Browse All Gadgets →</a>
-      <a href="#email-capture" class="btn-ghost">Get Free PDF Guide</a>
+<section class="hero">
+  <div class="glow glow1"></div>
+  <div class="glow glow2"></div>
+  <div class="glow glow3"></div>
+  <div class="hero-grid">
+    <div>
+      <div class="hero-eyebrow fade-in" style="animation-delay:0.1s"><span class="dot"></span> Loved by 50,000+ home cooks</div>
+      <h1 class="fade-in" style="animation-delay:0.2s">Kitchen finds that make your <span class="highlight">everyday cooking</span> feel effortless</h1>
+      <p class="sub fade-in" style="animation-delay:0.35s">We test and curate the internet's best-loved kitchen gadgets — the ones with thousands of five-star reviews — so you don't have to dig through Amazon yourself.</p>
+      <div class="hero-actions fade-in" style="animation-delay:0.5s">
+        <a href="#bestsellers" class="btn-primary"><svg class="icon"><use href="#i-spark"/></svg> Explore bestsellers</a>
+        <a href="#why" class="btn-secondary">How we pick <svg class="icon"><use href="#i-arrow"/></svg></a>
+      </div>
+    </div>
+    <div class="hero-stage">
+      <div class="hero-stage-glow"></div>
+      <div class="hero-carousel" id="hero-carousel"></div>
+      <div class="hero-dots" id="hero-dots"></div>
     </div>
   </div>
-  <div class="hero-stats fade-up-2">
-    <div class="stat"><div class="stat-n">45+</div><div class="stat-l">Products Curated</div></div>
-    <div class="stat"><div class="stat-n">50K+</div><div class="stat-l">Happy Readers</div></div>
-    <div class="stat"><div class="stat-n">$25</div><div class="stat-l">Avg. Price</div></div>
-    <div class="stat"><div class="stat-n">4.8★</div><div class="stat-l">Avg. Rating</div></div>
+</section>
+
+<div class="ticker-wrap">
+  <div class="ticker">
+    <span><svg class="icon"><use href="#i-truck"/></svg>Free shipping on Amazon Prime</span>
+    <span><svg class="icon"><use href="#i-star"/></svg>Curated from 50,000+ reviews</span>
+    <span><svg class="icon"><use href="#i-shield"/></svg>Only 4.5★+ rated picks</span>
+    <span><svg class="icon"><use href="#i-heart"/></svg>Updated weekly with new finds</span>
+    <span><svg class="icon"><use href="#i-truck"/></svg>Free shipping on Amazon Prime</span>
+    <span><svg class="icon"><use href="#i-star"/></svg>Curated from 50,000+ reviews</span>
+    <span><svg class="icon"><use href="#i-shield"/></svg>Only 4.5★+ rated picks</span>
+    <span><svg class="icon"><use href="#i-heart"/></svg>Updated weekly with new finds</span>
   </div>
 </div>
 
-<!-- PRODUCTS GRID -->
-<section id="products">
-  <div class="container">
-    <div class="products-header">
-      <div class="section-label">Top Picks</div>
-      <h2 class="section-title">Trending Kitchen Gadgets<br>People Can't Stop Buying</h2>
-      <p class="section-sub">Each product solves a real kitchen problem. All available on Amazon with fast shipping.</p>
-    </div>
-    <div class="products-grid">
+<section class="section" id="bestsellers">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">Handpicked & tested</div>
+    <h2>This week's kitchen bestsellers</h2>
+    <p>Every product below has thousands of verified reviews. Tap the dots or arrows on any photo to see it from every angle — just like on Amazon.</p>
+  </div>
 
-      <div class="product-card">
-        <div class="card-img">🥑</div>
-        <div class="card-body">
-          <div class="card-stars">★★★★★</div>
-          <div class="card-tag">Best Seller</div>
-          <div class="card-title">3-in-1 Avocado Slicer</div>
-          <div class="card-problem">Splits, pits, and slices avocados safely in seconds — no more knife injuries.</div>
-          <div class="card-footer">
-            <div class="card-price">$9<span>.99</span></div>
-            <a href="https://www.amazon.com/s?k=avocado+slicer&tag=kitchenfi0b96-20" target="_blank" class="card-btn">View on Amazon →</a>
-          </div>
-        </div>
-      </div>
+  <div class="cat-row reveal">
+    <div class="cat-pill active" data-cat="all">All</div>
+    <div class="cat-pill" data-cat="drinkware">Drinkware</div>
+    <div class="cat-pill" data-cat="appliances">Small appliances</div>
+    <div class="cat-pill" data-cat="tools">Tools & gadgets</div>
+    <div class="cat-pill" data-cat="storage">Storage</div>
+  </div>
 
-      <div class="product-card">
-        <div class="card-img">🫙</div>
-        <div class="card-body">
-          <div class="card-stars">★★★★★</div>
-          <div class="card-tag">Viral Pick</div>
-          <div class="card-title">Jar Opener (Electric)</div>
-          <div class="card-problem">Opens any jar size in 3 seconds. No more struggling with tight lids.</div>
-          <div class="card-footer">
-            <div class="card-price">$17<span>.99</span></div>
-            <a href="https://www.amazon.com/s?k=electric+jar+opener&tag=kitchenfi0b96-20" class="card-btn">View on Amazon →</a>
-          </div>
-        </div>
-      </div>
+  <div class="grid" id="product-grid"></div>
+  <div class="load-more-wrap"><button class="load-more-btn" id="load-more">Show more finds</button></div>
+</section>
 
-      <div class="product-card">
-        <div class="card-img">🌿</div>
-        <div class="card-body">
-          <div class="card-stars">★★★★☆</div>
-          <div class="card-tag">Under $15</div>
-          <div class="card-title">Herb Stripper & Scissors</div>
-          <div class="card-problem">Strip rosemary, thyme, and kale in one pull. Saves 10 minutes of prep.</div>
-          <div class="card-footer">
-            <div class="card-price">$12<span>.99</span></div>
-            <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank" class="card-btn">View on Amazon →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="card-img">🍳</div>
-        <div class="card-body">
-          <div class="card-stars">★★★★★</div>
-          <div class="card-tag">Editor's Pick</div>
-          <div class="card-title">Splatter Screen (Magnetic)</div>
-          <div class="card-problem">Stops oil splatter mess instantly. Magnetically sticks to the stove hood.</div>
-          <div class="card-footer">
-            <div class="card-price">$19<span>.99</span></div>
-            <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank" class="card-btn">View on Amazon →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="card-img">🥚</div>
-        <div class="card-body">
-          <div class="card-stars">★★★★★</div>
-          <div class="card-tag">Gift Idea</div>
-          <div class="card-title">Egg Cooker (Rapid)</div>
-          <div class="card-problem">Perfect soft, medium, or hard eggs every time — no guesswork, no boiling water.</div>
-          <div class="card-footer">
-            <div class="card-price">$24<span>.99</span></div>
-            <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank" class="card-btn">View on Amazon →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="card-img">🧄</div>
-        <div class="card-body">
-          <div class="card-stars">★★★★★</div>
-          <div class="card-tag">Viral Pick</div>
-          <div class="card-title">Garlic Rocker & Mincer</div>
-          <div class="card-problem">Mince a whole bulb in seconds. No sticky fingers, no smell on your hands.</div>
-          <div class="card-footer">
-            <div class="card-price">$14<span>.99</span></div>
-            <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank" class="card-btn">View on Amazon →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="card-img">🥗</div>
-        <div class="card-body">
-          <div class="card-stars">★★★★☆</div>
-          <div class="card-tag">Space Saver</div>
-          <div class="card-title">Salad Spinner (Collapsible)</div>
-          <div class="card-problem">Dries greens perfectly and collapses flat for easy drawer storage.</div>
-          <div class="card-footer">
-            <div class="card-price">$21<span>.99</span></div>
-            <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank" class="card-btn">View on Amazon →</a>
-          </div>
-        </div>
-      </div>
-
-      <div class="product-card">
-        <div class="card-img">🍋</div>
-        <div class="card-body">
-          <div class="card-stars">★★★★★</div>
-          <div class="card-tag">Under $10</div>
-          <div class="card-title">Citrus Sprayer (Direct)</div>
-          <div class="card-problem">Screw directly into lemon or lime. Fresh juice spray without squeezing.</div>
-          <div class="card-footer">
-            <div class="card-price">$7<span>.99</span></div>
-            <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank" class="card-btn">View on Amazon →</a>
-          </div>
-        </div>
-      </div>
-
-    </div>
+<section class="section why-section" id="why">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">Why home cooks trust us</div>
+    <h2>We do the digging, you do the cooking</h2>
+    <p>No sponsored junk, no guessing games. Just genuinely useful kitchen tools that thousands of people already love.</p>
+  </div>
+  <div class="why-grid">
+    <div class="why-card reveal"><div class="why-icon"><svg class="icon"><use href="#i-search"/></svg></div><h3>Real reviews only</h3><p>Every pick has thousands of verified 4.5★+ reviews — no fluff, no filler.</p></div>
+    <div class="why-card reveal"><div class="why-icon"><svg class="icon"><use href="#i-refresh"/></svg></div><h3>Updated weekly</h3><p>We track Amazon's actual bestseller charts so the list never goes stale.</p></div>
+    <div class="why-card reveal"><div class="why-icon"><svg class="icon"><use href="#i-dollar"/></svg></div><h3>No price markup</h3><p>You pay the exact same Amazon price — we just save you the search time.</p></div>
+    <div class="why-card reveal"><div class="why-icon"><svg class="icon"><use href="#i-handshake"/></svg></div><h3>Made for real kitchens</h3><p>Curated by people who actually cook, not algorithms chasing clicks.</p></div>
   </div>
 </section>
 
-<!-- FEATURED / EDITOR'S PICKS -->
-<section id="featured">
-  <div class="container">
-    <div class="section-label">Editor's Picks</div>
-    <h2 class="section-title">Gadgets Worth Every Penny</h2>
-    <p class="section-sub">Our team's absolute favourites — the ones we use every single day.</p>
-    <div class="featured-grid" style="margin-top:48px">
-
-      <div class="featured-card">
-        <div class="feat-icon">🔪</div>
-        <div>
-          <div class="feat-tag">🏆 #1 Pick</div>
-          <div class="feat-title">Mandoline Slicer Pro</div>
-          <div class="feat-desc">Slice vegetables paper-thin in seconds. Adjustable thickness, safety glove included. The single gadget that cut my meal prep time in half.</div>
-          <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank" class="feat-link">See on Amazon →</a>
-        </div>
-      </div>
-
-      <div class="featured-card">
-        <div class="feat-icon">🫕</div>
-        <div>
-          <div class="feat-tag">Most Gifted</div>
-          <div class="feat-title">Mini Waffle Maker</div>
-          <div class="feat-desc">Makes perfect waffles in 3 minutes. Great for kids, brunch, or even hash browns. Consistently one of Amazon's best-sellers in kitchen.</div>
-          <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank" class="feat-link">See on Amazon →</a>
-        </div>
-      </div>
-
-      <div class="featured-card">
-        <div class="feat-icon">🫙</div>
-        <div>
-          <div class="feat-tag">Space Saver</div>
-          <div class="feat-title">Vacuum Food Sealer</div>
-          <div class="feat-desc">Extends food freshness up to 5x longer. Stops freezer burn and food waste. Pays for itself in the first week of groceries saved.</div>
-          <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank" class="feat-link">See on Amazon →</a>
-        </div>
-      </div>
-
-      <div class="featured-card">
-        <div class="feat-icon">☕</div>
-        <div>
-          <div class="feat-tag">Morning Essential</div>
-          <div class="feat-title">Milk Frother (Electric)</div>
-          <div class="feat-desc">Barista-quality foam at home in 20 seconds. Hot or cold. The upgrade your morning coffee routine has been waiting for.</div>
-          <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank" class="feat-link">See on Amazon →</a>
-        </div>
-      </div>
-
-    </div>
+<section class="section">
+  <div class="stats-bar reveal">
+    <div class="stat"><div class="num">37+</div><div class="lbl">curated products</div></div>
+    <div class="stat"><div class="num">50K+</div><div class="lbl">monthly readers</div></div>
+    <div class="stat"><div class="num">4.7★</div><div class="lbl">average pick rating</div></div>
+    <div class="stat"><div class="num">100%</div><div class="lbl">real reviews verified</div></div>
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="how">
-  <div class="container" style="text-align:center">
-    <div class="section-label">How It Works</div>
-    <h2 class="section-title">From Discovery to Doorstep</h2>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>Browse Curated Picks</h3>
-        <p>We research and test hundreds of kitchen gadgets so you only see the best of the best.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Click to Amazon</h3>
-        <p>Every product links directly to Amazon. Prime shipping, trusted reviews, easy returns.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Cook Smarter</h3>
-        <p>The right gadget in the right kitchen changes everything. Less time prepping, more time enjoying.</p>
-      </div>
-    </div>
+<section class="section" id="reviews">
+  <div class="section-head reveal">
+    <div class="section-eyebrow">What people are saying</div>
+    <h2>Loved by home cooks everywhere</h2>
+  </div>
+  <div class="test-grid">
+    <div class="test-card reveal"><div class="test-stars">★★★★★</div><p class="quote">"I bought three things from this list and they're now the most-used gadgets in my kitchen. Saved me hours of scrolling Amazon."</p><div class="test-user"><div class="avatar">JM</div><div><div class="name">Jess M.</div><div class="role">Home cook</div></div></div></div>
+    <div class="test-card reveal"><div class="test-stars">★★★★★</div><p class="quote">"Finally a site that doesn't just push random products — every pick actually has the reviews to back it up."</p><div class="test-user"><div class="avatar">RK</div><div><div class="name">Rachel K.</div><div class="role">Meal prep enthusiast</div></div></div></div>
+    <div class="test-card reveal"><div class="test-stars">★★★★★</div><p class="quote">"The kitchen scale recommendation alone was worth it. So glad I found this before buying randomly on Amazon."</p><div class="test-user"><div class="avatar">AL</div><div><div class="name">Amanda L.</div><div class="role">Baking hobbyist</div></div></div></div>
   </div>
 </section>
 
-<!-- EMAIL CAPTURE -->
-<section id="email-capture">
-  <div class="container">
-    <div class="section-label" style="color:var(--accent2)">Free Download</div>
-    <h2 class="section-title">25 Genius Kitchen Gadgets<br>Under $25</h2>
-    <p class="section-sub">The free PDF guide that 50,000 home cooks already have. Instant download, no fluff.</p>
-
-    <div class="lead-magnet-box">
-      <h3>📋 What's Inside the Free Guide</h3>
-      <p>A curated list of the 25 best kitchen gadgets you can buy for under $25 each.</p>
-      <ul class="lead-list">
-        <li>25 hand-picked gadgets with real Amazon links</li>
-        <li>The #1 problem each gadget solves</li>
-        <li>Rated by value, quality & how often we actually use them</li>
-        <li>Bonus: 5 gadgets that save the most time</li>
-      </ul>
-    </div>
-
-    <div class="email-form">
-      <input type="email" id="emailInput" placeholder="Enter your email address..." />
-      <button onclick="handleSubmit()">Send Me the Guide →</button>
-    </div>
-    <div class="form-note">No spam. Unsubscribe anytime. We respect your inbox.</div>
-    <div class="success-msg" id="successMsg">
-      🎉 Check your inbox! Your free guide is on the way.
-    </div>
+<div class="cta-section" id="join">
+  <div class="blob3"></div>
+  <div class="blob4"></div>
+  <h2>Get new kitchen finds before anyone else</h2>
+  <p>Join our Pinterest community for weekly drops of the internet's best-loved kitchen gadgets.</p>
+  <div class="cta-form">
+    <input type="email" placeholder="Your email address">
+    <button onclick="this.innerText='Subscribed ✓'">Notify me</button>
   </div>
-</section>
+</div>
 
-<!-- REVIEWS -->
-<section id="reviews">
-  <div class="container">
-    <div class="section-label">Real People</div>
-    <h2 class="section-title">What Readers Are Saying</h2>
-    <div class="reviews-grid">
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">"I bought the egg cooker from this list and it's genuinely changed my mornings. Perfect eggs in 10 minutes while I get ready. Worth every dollar."</div>
-        <div class="reviewer">
-          <div class="reviewer-avatar">S</div>
-          <div>
-            <div class="reviewer-name">Sarah M.</div>
-            <div class="reviewer-tag">Home cook · Chicago</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">"The free guide is SO good. I saved it to my phone and ordered 6 things from it on the same day. The citrus sprayer alone is a game changer."</div>
-        <div class="reviewer">
-          <div class="reviewer-avatar">J</div>
-          <div>
-            <div class="reviewer-name">Jake T.</div>
-            <div class="reviewer-tag">Food blogger · Austin</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="review-card">
-        <div class="review-stars">★★★★★</div>
-        <div class="review-text">"Bought the mandoline slicer and herb stripper in the same order. Meal prep that used to take 90 minutes now takes 40. Absolutely incredible."</div>
-        <div class="reviewer">
-          <div class="reviewer-avatar">A</div>
-          <div>
-            <div class="reviewer-name">Amanda R.</div>
-            <div class="reviewer-tag">Meal prepper · NYC</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="logo">KitchenFinds</div>
-  <div class="footer-links">
-    <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank">About</a>
-    <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank">Contact</a>
-    <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank">Privacy Policy</a>
-    <a href="https://www.amazon.com/s?k=kitchen+gadgets&tag=kitchenfi0b96-20" target="_blank">Affiliate Disclosure</a>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-logo">Kitchen<span>Finds</span></div>
+      <p class="desc">We curate the internet's best-loved, highest-rated kitchen gadgets so you don't have to dig through endless Amazon listings.</p>
+      <div class="social-row">
+        <a href="#"><svg class="icon"><use href="#i-pinterest"/></svg></a>
+        <a href="#"><svg class="icon"><use href="#i-instagram"/></svg></a>
+        <a href="#"><svg class="icon"><use href="#i-tiktok"/></svg></a>
+      </div>
+    </div>
+    <div><h4>Shop</h4><ul><li>Drinkware</li><li>Small appliances</li><li>Tools & gadgets</li><li>Storage</li></ul></div>
+    <div><h4>Company</h4><ul><li>About us</li><li>How we pick</li><li>Contact</li></ul></div>
+    <div><h4>Legal</h4><ul><li>Affiliate disclosure</li><li>Privacy policy</li><li>Terms of use</li></ul></div>
   </div>
-  <p>
-    KitchenFinds is a participant in the Amazon Services LLC Associates Program.<br>
-    We earn a small commission when you buy through our links — at no extra cost to you.<br>
-    © 2025 KitchenFinds. All rights reserved.
-  </p>
+  <div class="footer-bottom">KitchenFinds is a participant in the Amazon Services LLC Associates Program. As an Amazon Associate, we earn from qualifying purchases. © 2026 KitchenFinds. All rights reserved.</div>
 </footer>
 
 <script>
-  // Email form
-  function handleSubmit() {
-    const val = document.getElementById('emailInput').value;
-    if (!val || !val.includes('@')) {
-      document.getElementById('emailInput').style.borderColor = '#e55';
-      return;
+const PRODUCTS = [
+{cat:"drinkware",badge:"bestseller",badgeText:"#1 Bestseller",fav:"2.1k",title:"Owala FreeSip Insulated Water Bottle, 24oz",desc:"Switches between sipping and gulping with one button — the reason it has over 100K five-star reviews.",stars:"★★★★★",rev:"116,282 reviews",link:"https://amzn.to/3Sluq3J",catLabel:"Drinkware",imgs:["51N42Mo2xvL","81gPgBnMQML","41j-Pra86lL","71nq2vYscxL"]},
+{cat:"tools",badge:"normal",badgeText:"Most loved",fav:"1.8k",title:"Amazon Basics Digital Kitchen Scale",desc:"Precise to the gram — a must for baking, portion control, and following recipes exactly.",stars:"★★★★★",rev:"174,884 reviews",link:"https://amzn.to/4fYnXWe",catLabel:"Tools & gadgets",imgs:["71la+0Kl7VL","718mTrD8r-L","81FYolLxulL","91o88q0yajL"]},
+{cat:"drinkware",fav:"3.4k",title:"Stanley Quencher H2.0 Tumbler, 40oz",desc:"The viral tumbler that started it all — keeps drinks cold for hours and fits in most cup holders.",stars:"★★★★★",rev:"100,497 reviews",link:"https://amzn.to/4oFreM8",catLabel:"Drinkware",imgs:["51InF+V-QPL","51dI06gU2iL","41YGbbCgJ8L","61hSBij0doL"]},
+{cat:"tools",badge:"bestseller",badgeText:"5★ rated",fav:"956",title:"Alpha Grillers Digital Meat Thermometer",desc:"Reads temperature in half a second — no more guessing if dinner is actually done.",stars:"★★★★★",rev:"89,625 reviews",link:"https://amzn.to/4oKHZ94",catLabel:"Tools & gadgets",imgs:["71xcfwefMbL","81Gm7Z9vWpL","81CES8zhaTL","81GOFvbUpdL"]},
+{cat:"drinkware",fav:"1.2k",title:"YETI Rambler 20oz Tumbler with MagSlider",desc:"Built like a tank, keeps coffee hot for hours — comes in 30+ colors to match your style.",stars:"★★★★★",rev:"146,363 reviews",link:"https://amzn.to/4w3gZUB",catLabel:"Drinkware",imgs:["61qswdidioL","61Z+hbZCChL","61H-7UqKKRL","71Mh4XzOr-L"]},
+{cat:"appliances",fav:"412",title:"bella 2-Slice Slim Toaster",desc:"Compact enough for small kitchens, with 6 shade settings to get toast exactly right.",stars:"★★★★☆",rev:"16,780 reviews",link:"https://amzn.to/3SEkSRn",catLabel:"Small appliances",imgs:["71zZ0tSkfHL","61+f7vnfVkL","61Kd7gTeBAL","61a2E-zCBML"]},
+{cat:"appliances",badge:"bestseller",badgeText:"Trending",fav:"2.7k",title:"Ninja Fit Compact Personal Blender",desc:"Small footprint, big power — perfect for single-serve smoothies without the cleanup hassle.",stars:"★★★★★",rev:"10,000+ reviews",link:"https://amzn.to/4gh3HPR",catLabel:"Small appliances",imgs:["61hHdo9iCtL","81DBBGo+mlL","71QTa4-IgYL","81yCxeWdCYL"]},
+{cat:"appliances",fav:"1.5k",title:"Instant Pot Vortex Plus Air Fryer, 6QT",desc:"Crispy results with way less oil — one of the most reviewed air fryers on Amazon.",stars:"★★★★★",rev:"72,116 reviews",link:"https://amzn.to/4xCqBHz",catLabel:"Small appliances",imgs:["71JFll6HL-L","81oY9WYi8GL","81tovF-7EvL","91WoVjveIcL"]},
+{cat:"appliances",badge:"normal",badgeText:"Most loved",fav:"3.1k",title:"Elite Gourmet Easy Egg Cooker, 7-egg",desc:"Soft, medium, or hard-boiled — set it and forget it, no stovetop watching required.",stars:"★★★★☆",rev:"14,039 reviews",link:"https://amzn.to/4uOjV6u",catLabel:"Small appliances",imgs:["61f7owQC8UL","51M4PjG0lNL","71TZVNM1G+L","71epE00+OFL"]},
+{cat:"tools",fav:"2.9k",title:"Ourokhome Manual Food Chopper",desc:"No blender noise, no cords — pull the cord a few times for perfectly diced veggies.",stars:"★★★★☆",rev:"11,583 reviews",link:"https://amzn.to/4oCICBc",catLabel:"Tools & gadgets",imgs:["61gZF7z0BOL","71QWDv-Z3WL","71wtHfDxWsL","71nMGehHjZL"]},
+{cat:"tools",fav:"720",title:"TrendPlain Glass Olive Oil Sprayer, 16oz",desc:"Two-in-one pour and mist — portion control for healthier cooking without the mess.",stars:"★★★★☆",rev:"41,529 reviews",link:"https://amzn.to/4uQvVV7",catLabel:"Tools & gadgets",imgs:["716HuBmcRsL","71Tuojn2rML","81Oe+I0fwrL","71D0Ylc+J0L"]},
+{cat:"storage",fav:"1.4k",title:"Rubbermaid Brilliance Food Storage Set",desc:"Crystal-clear, leak-proof, and stackable — the fridge organization upgrade everyone needs.",stars:"★★★★☆",rev:"58,875 reviews",link:"https://amzn.to/4eo0JHU",catLabel:"Storage",imgs:["81Ap89R-ajL","81oRIn1jciL","71vYvCE1wSL","81-Br9ROllL"]},
+{cat:"appliances",fav:"980",title:"Crock-Pot 7-Quart Manual Slow Cooker",stars:"★★★★★",rev:"52,750 reviews",link:"https://amzn.to/4gvGKIu",catLabel:"Small appliances",imgs:["91Efej53gdL","91g91EMUGZL","91kYPSUiYqL","91zVhc2+pjL"]},
+{cat:"tools",fav:"640",title:"OXO Good Grips Salad Spinner, 6.22 qt",stars:"★★★★★",rev:"53,050 reviews",link:"https://amzn.to/4w7vpmN",catLabel:"Tools & gadgets",imgs:["61A9bmtCImL","71IO1uVcnNL","81bU49sXo9L","81ZPSZ+A5rL"]},
+{cat:"drinkware",fav:"410",title:"Spreccio Mason Jar Pitcher, 64oz",stars:"★★★★★",rev:"2,175 reviews",link:"https://amzn.to/4gvGMA6",catLabel:"Drinkware",imgs:["71aq3ah+siL","71FJ2+c5UxL","71Y6nNvPzwL","71DO3N8CAoL"]},
+{cat:"appliances",fav:"1.9k",title:"Ninja Kitchen System, food processor & blender",stars:"★★★★☆",rev:"42,451 reviews",link:"https://amzn.to/4oPOirN",catLabel:"Small appliances",imgs:["6134v3OZlLL","81ZiZqPlxNL","81vRtTREi4L","81YEjH8x7SL"]},
+{cat:"appliances",badge:"normal",badgeText:"New",fav:"880",title:"Ninja CREAMi Deluxe Ice Cream Maker",stars:"★★★★☆",rev:"16,008 reviews",link:"https://amzn.to/4eCqov6",catLabel:"Small appliances",imgs:["61-Cz7xHqhL","81zRiBWWaLL","81YvG7H-VeL","81bzXg3okpL"]},
+{cat:"tools",fav:"330",title:"KitchenAid Multifunction Can & Bottle Opener",stars:"★★★★☆",rev:"90,609 reviews",link:"https://amzn.to/4aZCKMM",catLabel:"Tools & gadgets",imgs:["51yVnItdI4L","71jElwbrsAL","71JPVpsR6dL","61zGZmW0iZL"]},
+{cat:"storage",fav:"580",title:"DOQAUS Ice Cube Tray Set with Lid, 4-pack",stars:"★★★★☆",rev:"13,147 reviews",link:"https://amzn.to/4oDGv0h",catLabel:"Storage",imgs:["61NNkHyvrjL","61Mfd0b32yL","71b1eh10wKL","71FxGA4gHPL"]},
+{cat:"tools",badge:"normal",badgeText:"Smart",fav:"210",title:"CHEF iQ Sense Smart Wireless Meat Thermometer",stars:"★★★★☆",rev:"1,524 reviews",link:"https://amzn.to/4oEOXMB",catLabel:"Tools & gadgets",imgs:["61RsL5AK0VL","91kFjxcbo8L","81NcjkUIVJL","71Lyjru47VL"]},
+{cat:"tools",fav:"290",title:"Amazon Basics 12-Piece Kitchen Knife Set",stars:"★★★★☆",rev:"26,246 reviews",link:"https://amzn.to/4eEsHOs",catLabel:"Tools & gadgets",imgs:["71iB-QmRWEL","81MTwuv2IgL","614ywaqTahL","81X52X-5KAL"]},
+{cat:"tools",fav:"145",title:"NULAS 8-Piece Knife Set with Block",stars:"★★★★☆",rev:"1,000+ reviews",link:"https://amzn.to/3QC4rnX",catLabel:"Tools & gadgets",imgs:["61gXmtPT9pL","71sIB80RXUL","71xUYoj9fqL","81a1iAzisNL"]},
+{cat:"storage",fav:"580",title:"Lifewit Expandable Silverware Organizer",stars:"★★★★☆",rev:"30,385 reviews",link:"https://amzn.to/4vZ51eq",catLabel:"Storage",imgs:["71Tv93iNW9L","71Jxs2kErgL","7124NH-yCwL","71luSeMdVqL"]},
+{cat:"drinkware",fav:"890",title:"Owala FreeSip Sway Water Bottle, 30oz",stars:"★★★★☆",rev:"8,568 reviews",link:"https://amzn.to/4a7HFLu",catLabel:"Drinkware",imgs:["51s5NkB02rL","81z-eXxY0LL","71juNj4G2eL","71eMnxtsWOL"]},
+{cat:"tools",fav:"95",title:"Cuisinart Grilling Prep & Serve Trays",stars:"★★★★★",rev:"8,207 reviews",link:"https://amzn.to/4aNDrJ5",catLabel:"Tools & gadgets",imgs:["815WrSwTKCL","81Z5PSCAlHL","719fVaBtoUL","51asjHtKdFL"]},
+{cat:"tools",fav:"410",title:"KitchenAid Ribbed Silicone Oven Mitts, 2-pack",stars:"★★★★☆",rev:"12,883 reviews",link:"https://amzn.to/4uRthhY",catLabel:"Tools & gadgets",imgs:["51u4iXVVBOL","81OryX2BKyL","71yUt9d054L","61yN0kiWwlL"]},
+{cat:"drinkware",fav:"320",title:"Owala SmoothSip Slider Coffee Tumbler, 12oz",stars:"★★★★☆",rev:"13,363 reviews",link:"https://amzn.to/4uSFxyp",catLabel:"Drinkware",imgs:["516eFmJzWHL","61XPldMRh7L","61f6kxPky3L","71giZCcICuL"]},
+{cat:"drinkware",fav:"650",title:"Stanley Quencher ProTour Flip Straw, 40oz",stars:"★★★★☆",rev:"17,830 reviews",link:"https://amzn.to/4ey54H9",catLabel:"Drinkware",imgs:["61VF7bUqzsL","71v18tI+Z+L","81KAKtktsVL","61BNhhq+bOL"]},
+{cat:"tools",fav:"540",title:"Homaxy Cotton Waffle Kitchen Towels, 6-pack",stars:"★★★★☆",rev:"40,835 reviews",link:"https://amzn.to/4gxN0j1",catLabel:"Tools & gadgets",imgs:["81YlKeBDwML","71-tUVBNGfL","71e14LMLJLL","81bNcQ7a5AL"]},
+{cat:"tools",fav:"700",title:"KitchenAid All Purpose Kitchen Shears",stars:"★★★★★",rev:"56,784 reviews",link:"https://amzn.to/44nVQZi",catLabel:"Tools & gadgets",imgs:["51ei3hOd9oL","710B9HpzMPL","615Rolz2qVL","71OsNubcwDL"]},
+{cat:"tools",fav:"210",title:"Reynolds Unbleached Parchment Paper Roll",stars:"★★★★★",rev:"5,000+ reviews",link:"https://amzn.to/4uOGt7e",catLabel:"Tools & gadgets",imgs:["71fSQYVwU7L","71vzXKJ23aL","91nptEAxhKL","91IVB63n0+L"]},
+{cat:"storage",fav:"380",title:"Lifewit Medium Insulated Lunch Bag",stars:"★★★★☆",rev:"59,673 reviews",link:"https://amzn.to/3QWscHw",catLabel:"Storage",imgs:["71tf1kD9PBL","71Lhy02ZpxL","71aSAj1A3+L","81MqSv8KV9L"]},
+{cat:"tools",fav:"60",title:"Pureegg Disposable Table Cloths, 10-pack",stars:"★★★★☆",rev:"6,591 reviews",link:"https://amzn.to/4xGXwL0",catLabel:"Tools & gadgets",imgs:["71eAr9iJ0KL","71kq1i70QxL","71D9jMGRF5L","71hISxB6kvL"]},
+{cat:"tools",fav:"290",title:"Air Fryer Disposable Paper Liners, 125-pack",stars:"★★★★☆",rev:"25,404 reviews",link:"https://amzn.to/4w0AOvA",catLabel:"Tools & gadgets",imgs:["81Fr+9o0iWL","81e1wUUjUfL","81ISkcK6TjL","81mI2Stf17L"]},
+{cat:"drinkware",fav:"130",title:"Frost Buddy Universal Can Cooler",stars:"★★★★☆",rev:"10,437 reviews",link:"https://amzn.to/4aFSPHq",catLabel:"Drinkware",imgs:["81kGfGTdlVL","71K2BRefmoL","71-ou+Ol1vL","718o3Ml6H1L"]},
+{cat:"tools",fav:"230",title:"Electric Salt & Pepper Grinder Set with LED",stars:"★★★★☆",rev:"2,000+ reviews",link:"https://amzn.to/4w5Jh0Q",catLabel:"Tools & gadgets",imgs:["71NpF4JP7HL","81pSRpAAEPL","81Yhc+YukwL","71wEtEyPDjL"]},
+{cat:"appliances",fav:"410",title:"Turelar Handheld Immersion Blender, 5-in-1",stars:"★★★★☆",rev:"6,966 reviews",link:"https://amzn.to/43NKGwW",catLabel:"Small appliances",imgs:["61XRVcpkxxL","71M3jScYNiL","71tQ0DH71iL","71mcxA1cYkL"]}
+];
+
+const IMG_BASE = "https://m.media-amazon.com/images/I/";
+const IMG_SUFFIX = "._AC_SL1500_.jpg";
+let visibleCount = 12;
+
+function cardHTML(p, idx) {
+  let imgsHTML = p.imgs.map((id,i) => `<img src="${IMG_BASE}${id}${IMG_SUFFIX}" class="${i===0?'active':''}" loading="lazy" data-i="${i}" alt="${p.title} — photo ${i+1}">`).join('');
+  let dotsHTML = p.imgs.map((_,i) => `<span class="${i===0?'active':''}" data-i="${i}"></span>`).join('');
+  let badgeHTML = p.badge ? `<div class="badge ${p.badge==='bestseller'?'bestseller':''}">${p.badgeText}</div>` : '';
+  return `<div class="card reveal in-view" data-cat="${p.cat}" data-idx="${idx}">
+    <div class="card-img-wrap">
+      <div class="gallery">${imgsHTML}</div>
+      ${p.imgs.length>1 ? `<div class="gnav prev"><svg class="icon"><use href="#i-arrow"/></svg></div><div class="gnav next"><svg class="icon"><use href="#i-arrow"/></svg></div><div class="gdots">${dotsHTML}</div>` : ''}
+      ${badgeHTML}
+      <div class="fav-btn"><svg class="icon"><use href="#i-heart"/></svg> ${p.fav}</div>
+    </div>
+    <div class="card-body">
+      <div class="card-cat">${p.catLabel}</div>
+      <div class="card-title">${p.title}</div>
+      <div class="card-desc">${p.desc || 'A genuinely useful kitchen find, loved by thousands of verified reviewers.'}</div>
+      <div class="card-rating"><span class="stars">${p.stars}</span><span class="rev-count">${p.rev}</span></div>
+      <a href="${p.link}" target="_blank" class="shop-btn">View on Amazon <svg class="icon"><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>`;
+}
+
+function renderGrid() {
+  const grid = document.getElementById('product-grid');
+  grid.innerHTML = PRODUCTS.slice(0, visibleCount).map((p,i) => cardHTML(p,i)).join('');
+  document.getElementById('load-more').style.display = visibleCount >= PRODUCTS.length ? 'none' : 'inline-block';
+  attachGalleryEvents();
+  applyFilter();
+}
+
+function attachGalleryEvents() {
+  document.querySelectorAll('.card-img-wrap').forEach(wrap => {
+    const imgs = wrap.querySelectorAll('.gallery img');
+    const dots = wrap.querySelectorAll('.gdots span');
+    let idx = 0;
+    function show(i) {
+      idx = (i + imgs.length) % imgs.length;
+      imgs.forEach((im,j) => im.classList.toggle('active', j===idx));
+      dots.forEach((d,j) => d.classList.toggle('active', j===idx));
     }
-    document.querySelector('.email-form').style.display = 'none';
-    document.getElementById('successMsg').style.display = 'block';
-  }
-
-  // Scroll fade-in for cards
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.product-card, .featured-card, .step, .review-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(24px)';
-    el.style.transition = 'opacity .5s ease, transform .5s ease';
-    observer.observe(el);
+    dots.forEach((d,j) => d.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); show(j); }));
+    imgs.forEach(im => im.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); show(idx+1); }));
+    const prev = wrap.querySelector('.gnav.prev');
+    const next = wrap.querySelector('.gnav.next');
+    if (prev) prev.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); show(idx-1); });
+    if (next) next.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); show(idx+1); });
   });
+}
+
+let activeCat = 'all';
+function applyFilter() {
+  document.querySelectorAll('#product-grid .card').forEach(card => {
+    card.classList.toggle('hidden', activeCat !== 'all' && card.dataset.cat !== activeCat);
+  });
+}
+
+document.querySelectorAll('.cat-pill').forEach(pill => {
+  pill.addEventListener('click', () => {
+    document.querySelectorAll('.cat-pill').forEach(p => p.classList.remove('active'));
+    pill.classList.add('active');
+    activeCat = pill.dataset.cat;
+    applyFilter();
+  });
+});
+
+document.getElementById('load-more').addEventListener('click', () => {
+  visibleCount += 12;
+  renderGrid();
+});
+
+renderGrid();
+
+const heroSlides = PRODUCTS.slice(0,6);
+const heroCarousel = document.getElementById('hero-carousel');
+const heroDots = document.getElementById('hero-dots');
+heroCarousel.innerHTML = heroSlides.map((p,i) => `<div class="hero-slide ${i===0?'active':''}"><img src="${IMG_BASE}${p.imgs[0]}${IMG_SUFFIX}" alt="${p.title}"><div class="hs-name">${p.title}</div><div class="hs-rating">${p.stars} ${p.rev}</div></div>`).join('');
+heroDots.innerHTML = heroSlides.map((_,i) => `<span class="${i===0?'active':''}"></span>`).join('');
+let heroIdx = 0;
+setInterval(() => {
+  heroIdx = (heroIdx + 1) % heroSlides.length;
+  document.querySelectorAll('.hero-slide').forEach((s,i) => s.classList.toggle('active', i===heroIdx));
+  document.querySelectorAll('.hero-dots span').forEach((d,i) => d.classList.toggle('active', i===heroIdx));
+}, 3200);
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('in-view'); });
+}, { threshold: 0.15 });
+document.querySelectorAll('.section-head.reveal, .why-card.reveal, .stats-bar.reveal, .test-card.reveal, .cat-row.reveal').forEach(el => obs.observe(el));
+setTimeout(() => { document.querySelectorAll('.reveal').forEach(el => el.classList.add('in-view')); }, 1500);
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.padding = window.scrollY > 40 ? '12px 6%' : '18px 6%';
+});
 </script>
 </body>
 </html>
